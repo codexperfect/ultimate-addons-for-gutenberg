@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
+    "@wordpress/i18n": "^3.1.1",
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -96,11 +97,18 @@
           "polyfill": false,
           "regenerator": true
         }
+      ],
+      [
+        "@wordpress/babel-plugin-makepot",
+        {
+          "output": "languages/ultimate-addons-for-gutenberg-js.pot"
+        }
       ]
     ]
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "@wordpress/babel-plugin-makepot": "^2.1.1",
     "eslint": "^5.10.0",
     "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-jest": "^21.27.2",

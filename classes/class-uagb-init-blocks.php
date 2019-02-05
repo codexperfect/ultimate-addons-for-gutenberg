@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Init_Blocks {
 
+
 	/**
 	 * Member Variable
 	 *
@@ -108,7 +109,6 @@ class UAGB_Init_Blocks {
 		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', $value );
 
 		if ( $enable_font_awesome ) {
-
 			$font_awesome = apply_filters( 'uagb_font_awesome_url', 'https://use.fontawesome.com/releases/v5.6.0/css/all.css' );
 			// Font Awesome.
 			wp_enqueue_style(
@@ -163,6 +163,8 @@ class UAGB_Init_Blocks {
 			true // Enqueue the script in the footer.
 		);
 
+		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
+
 		// Styles.
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.
@@ -185,9 +187,7 @@ class UAGB_Init_Blocks {
 		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 		if ( is_array( $saved_blocks ) ) {
-
 			foreach ( $saved_blocks as $slug => $data ) {
-
 				$_slug         = 'uagb/' . $slug;
 				$current_block = UAGB_Config::$block_attributes[ $_slug ];
 
