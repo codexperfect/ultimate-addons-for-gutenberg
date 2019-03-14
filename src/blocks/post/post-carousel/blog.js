@@ -9,6 +9,17 @@ import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 class Blog extends React.Component {
 
+	constructor() {
+
+		super( ...arguments )
+		this.onSlideChange = this.onSlideChange.bind(this)
+	}
+
+	onSlideChange() {
+
+		UAGBPostCarousel._adjustHeight( this.props.attributes, "#uagb-post__carousel-" + this.props.block_id )
+	}
+
 	render() {
 
 		const { attributes, className, latestPosts, block_id } = this.props
@@ -69,6 +80,7 @@ class Blog extends React.Component {
 			rtl : false,
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
+			afterChange : this.onSlideChange,
 			responsive : [
 				{
 					breakpoint : 1024,
@@ -112,6 +124,7 @@ class Blog extends React.Component {
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
+					data-equal-height={"yes"}
 				>
 					<div
 						className={ classnames(
@@ -143,6 +156,7 @@ class Blog extends React.Component {
 						`uagb-post__image-position-${ imgPosition }`
 					) }
 					data-blog-id={block_id}
+					data-equal-height={"yes"}
 					id={ `uagb-post__carousel-${ block_id }` }
 					style={ ( "dots" == arrowDots ) ? { padding: "0 0 35px 0" } : {} }
 				>

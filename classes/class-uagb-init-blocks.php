@@ -144,6 +144,14 @@ class UAGB_Init_Blocks {
 				false // Enqueue the script in the footer.
 			);
 
+			wp_enqueue_script(
+				'uagb-post-carousel-js', // Handle.
+				UAGB_URL . 'assets/js/post-carousel.js',
+				array( 'jquery' ),
+				UAGB_VER,
+				true // Enqueue the script in the footer.
+			);
+
 			// Styles.
 			wp_enqueue_style(
 				'uagb-slick-css', // Handle.
