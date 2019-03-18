@@ -54,9 +54,8 @@
 
 				var num = 0
 				var elementEnd = $last_item + 20
-				var connectorHeight = 3 * $(this).find(".uagb-timeline__marker:first").height()
-				var viewportHeight = document.documentElement.clientHeight 
-				var viewportHeightHalf = viewportHeight/2 + connectorHeight
+				var viewportHeight = document.documentElement.clientHeight
+				var viewportHeightHalf = viewportHeight/1.75
 				var elementPos = $(this).offset().top
 				var new_elementPos = elementPos + timeline_start_icon.top
 				var photoViewportOffsetTop = new_elementPos - $document.scrollTop()
@@ -79,7 +78,6 @@
 					if ( (photoViewportOffsetTop  + viewportHeightHalf ) < elementEnd ) {
 						if (0 > photoViewportOffsetTop) {
 							line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop))
-							++num
 						} else {
 							line_inner.height((viewportHeightHalf) + photoViewportOffsetTop )
 						}
@@ -97,7 +95,7 @@
 				var timeline_icon = $(this).find(".uagb-timeline__marker"),
 					animate_border  = $(this).find(".uagb-timeline__field-wrap")
 
-				if( animate_border.length == 0 ){						
+				if( animate_border.length == 0 ){
 					animate_border  = $(this).find(".uagb-timeline__animate-border")
 				}
 
@@ -136,8 +134,9 @@
 					}
 				}
 
-			})	
-    	}		
+			})
+    	}
 	}
 
 } )( jQuery )
+
