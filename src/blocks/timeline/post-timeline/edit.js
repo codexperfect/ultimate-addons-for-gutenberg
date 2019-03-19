@@ -933,14 +933,6 @@ class UAGBTimeline extends Component {
 		//Store lient id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
-		var id = this.props.clientId
-		window.addEventListener("load", this.timelineContent_back(id))
-		window.addEventListener("resize", this.timelineContent_back(id))
-		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {
-			time.timelineContent_back(id)
-		})
-
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-timeline-style-" + this.props.clientId )
@@ -1003,7 +995,7 @@ class UAGBTimeline extends Component {
 
 			var connectorHeight = 3 * timeline.find(".uagb-timeline__marker:first").height()
 			var viewportHeight = document.documentElement.clientHeight
-			var viewportHeightHalf = viewportHeight/1.75
+			var viewportHeightHalf = viewportHeight/2
 
 			var elementPos = tm_item.offset().top
 
@@ -1039,6 +1031,17 @@ class UAGBTimeline extends Component {
 					}
 				}
 			}
+
+			if( $(".edit-post-layout__content").scrollTop() == 0 ){
+				line_inner.height(0)
+			}
+			var scroll_at_bottom = false;
+			var elem = $(".edit-post-layout__content");
+			if ((elem[0].scrollHeight - elem.scrollTop()).toFixed(0) == elem.height())
+		    {
+		        line_inner.height(elementEnd);
+				scroll_at_bottom = true;
+		    }
 
 			//For changing icon background color and icon color.
 			var timeline_icon_pos, timeline_card_pos
@@ -1079,6 +1082,13 @@ class UAGBTimeline extends Component {
 					timeline_icon[i].classList.add("uagb-timeline__out-view-icon")
 					timeline_icon[i].classList.remove("uagb-timeline__in-view-icon")
 
+				}
+
+				if( scroll_at_bottom ) {
+					animate_border[i].classList.remove("out-view")
+					animate_border[i].classList.add("in-view")
+				    timeline_icon[i].classList.remove("uagb-timeline__out-view-icon")
+					timeline_icon[i].classList.add("uagb-timeline__in-view-icon")
 				}
 			}
 

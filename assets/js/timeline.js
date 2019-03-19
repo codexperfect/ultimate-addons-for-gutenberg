@@ -55,7 +55,7 @@
 				var num = 0
 				var elementEnd = $last_item + 20
 				var viewportHeight = document.documentElement.clientHeight
-				var viewportHeightHalf = viewportHeight/1.75
+				var viewportHeightHalf = viewportHeight/2
 				var elementPos = $(this).offset().top
 				var new_elementPos = elementPos + timeline_start_icon.top
 				var photoViewportOffsetTop = new_elementPos - $document.scrollTop()
@@ -86,6 +86,18 @@
 							line_inner.height(elementEnd)
 						}
 					}
+				}
+
+				if( $document.scrollTop() == 0 ){
+					line_inner.height(0)
+				}
+
+				var scrollHeight = $(document).height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+				var scroll_at_bottom = false;
+				if (parseInt(scrollHeight - scrollPosition) / scrollHeight === 0) {
+				   line_inner.height(elementEnd);
+				   scroll_at_bottom = true;
 				}
 
 				//Icon bg color and icon color
@@ -132,6 +144,14 @@
 						timeline_icon[i].classList.remove("uagb-timeline__in-view-icon")
 
 					}
+
+					if( scroll_at_bottom ) {
+						animate_border[i].classList.remove("out-view")
+						animate_border[i].classList.add("in-view")
+					    timeline_icon[i].classList.remove("uagb-timeline__out-view-icon")
+						timeline_icon[i].classList.add("uagb-timeline__in-view-icon")
+					}
+
 				}
 
 			})
