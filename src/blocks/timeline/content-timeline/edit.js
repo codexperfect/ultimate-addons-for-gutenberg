@@ -962,7 +962,6 @@ class UAGBcontentTimeline extends Component {
 				if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
 					if (0 > photoViewportOffsetTop) {
 						line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop))
-						++num
 					} else {
 						line_inner.height((viewportHeightHalf) + photoViewportOffsetTop)
 					}
@@ -980,7 +979,7 @@ class UAGBcontentTimeline extends Component {
 			var scroll_at_bottom = false;
 			var elem = $(".edit-post-layout__content");
 
-			if ((elem[0].scrollHeight - elem.scrollTop()).toFixed(0) == elem.height())
+			if (Math.abs(elem[0].scrollHeight - elem.scrollTop()).toFixed(0) == elem.height())
 		    {
 		        line_inner.height(elementEnd);
 				scroll_at_bottom = true;

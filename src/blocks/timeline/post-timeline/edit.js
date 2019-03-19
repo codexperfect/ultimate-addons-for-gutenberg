@@ -1021,7 +1021,6 @@ class UAGBTimeline extends Component {
 				if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
 					if (0 > photoViewportOffsetTop) {
 						line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop))
-						++num
 					} else {
 						line_inner.height((viewportHeightHalf) + photoViewportOffsetTop)
 					}
