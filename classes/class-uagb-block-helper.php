@@ -4653,6 +4653,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd.
 		}
 
+
+		/**
+		 * Get get_timeline_js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_timeline_js( $id ) {
+			// @codingStandardsIgnoreStart.
+			$selector =	'#uagb-ctm-'. $id;
+			?>
+				jQuery( document ).ready(function() {
+					UAGBTimeline._run( '<?php echo $selector; ?>' );
+				})
+			<?php
+
+			// @codingStandardsIgnoreEnd.
+		}
+
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
