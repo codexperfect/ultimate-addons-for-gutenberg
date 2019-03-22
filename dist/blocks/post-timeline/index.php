@@ -729,12 +729,12 @@ function uagb_tm_get_day_align_classes( $attributes, $index_val ) {
  */
 function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 
-	$timelin_alignment  = $attributes['timelinAlignment'];
-	$arrowlin_alignment = $attributes['arrowlinAlignment'];
-	$display_post_date  = $attributes['displayPostDate'];
-	$posts_to_show      = $attributes['postsToShow'];
-	$align              = $attributes['align'];
-
+	$timelin_alignment   = $attributes['timelinAlignment'];
+	$arrowlin_alignment  = $attributes['arrowlinAlignment'];
+	$display_post_date   = $attributes['displayPostDate'];
+	$posts_to_show       = $attributes['postsToShow'];
+	$align               = $attributes['align'];
+	$display_post_image  = $attributes['displayPostImage'];
 	$content_align_class = uagb_tm_get_align_classes( $attributes, 0 ); // Get classname for layout alignment.
 	$day_align_class     = uagb_tm_get_day_align_classes( $attributes, 0 ); // Get classname for day alignment.
 	$display_inner_date  = false;
@@ -763,8 +763,11 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
 									<?php echo uagb_tm_get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
 								</div>
-								<?php echo uagb_tm_get_image( $attributes ); ?>
-
+								<?php
+								if ( $display_post_image ) {
+									echo uagb_tm_get_image( $attributes );
+								}
+								?>
 								<div class = "uagb-content" >
 									<?php
 										uagb_tm_get_title( $attributes );
