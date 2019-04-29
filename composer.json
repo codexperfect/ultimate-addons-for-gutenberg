@@ -1,4 +1,20 @@
 {
+  "name": "codexperfect/ultimate-addons-for-gutenberg",
+  "description": "Ultimate Add-ons for Gutenberg.",
+  "authors": [
+    {
+      "name": "brainstormforce",
+      "homepage": "https://profiles.wordpress.org/brainstormforce/"
+    },
+    {
+      "name": "sashainparis",
+      "email": "alexandre@codexperfect.com"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/brainstormforce/ultimate-addons-for-gutenberg",
+  "minimum-stability": "dev",
+  "require": {},
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
     "squizlabs/php_codesniffer": "^3.1",
